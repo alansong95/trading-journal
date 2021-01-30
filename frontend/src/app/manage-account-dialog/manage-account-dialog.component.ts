@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
+
 import { AccountService } from '../account.service';
+
 
 @Component({
   selector: 'app-manage-account-dialog',
@@ -10,15 +13,18 @@ export class ManageAccountDialogComponent implements OnInit {
   accounts = [];
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private dialogRef: MatDialogRef<ManageAccountDialogComponent>,
   ) { }
 
   ngOnInit(): void {
     this.accountService.getAccounts().subscribe(res => {
       if (res.resp === 'success') {
+        console.log(res);
         this.accounts = res.data.accounts;
       } else {
-        alert('Could not fetch your accounts. Please try again later.');
+        alert(res.data.message);
+        this.dialogRef.close();
       }
     });
   }
@@ -29,5 +35,32 @@ export class ManageAccountDialogComponent implements OnInit {
 
   deleteAccount(toDelete: string) {
     this.accounts = this.accounts.filter(account => account !== toDelete);
+  }
+
+  // saveAccounts() {
+  //   this.accountService.saveAccounts(this.accounts).subscribe(res => {
+  //     if (res.resp === 'success') {
+  //       console.log(res);
+  //       this.accounts = res.data.accounts;
+  //     } else {
+  //       alert('Could not save your accounts. Please try again later.');
+  //     }
+  //   });
+  // }
+
+  saveAccounts() {
+    return this.accountService.saveAccounts(this.accounts);
+  }
+
+  onClose() {
+    console.log(this.accounts);
+    this.saveAccounts().subscribe(res => {
+      if (res.resp === 'success') {
+        this.accounts = res.data.accounts;
+        this.dialogRef.close();
+      } else {
+        alert(res.data.message);
+      }
+    });
   }
 }
