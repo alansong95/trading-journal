@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <span class="title">Trading Journal</span>
+
+  <mat-icon [matMenuTriggerFor]="settingsMenu" class="clickable">settings</mat-icon>
+  <mat-menu #settingsMenu="matMenu">
+    <button mat-menu-item (click)="manageAccounts()">Manage Accounts</button>
+  </mat-menu>
+</mat-toolbar>
