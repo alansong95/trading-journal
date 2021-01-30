@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ManageAccountDialogComponent} from '../manage-account-dialog/manage-account-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
   }
 
   manageAccounts() {
-    console.log('hello');
+    const dialogRef = this.dialog.open(ManageAccountDialogComponent, {restoreFocus: false});
+
+    // Manually restore focus to the menu trigger since the element that
+    // opens the dialog won't be in the DOM any more when the dialog closes.
+    dialogRef.afterClosed().subscribe(() => console.log('ok'));
   }
 }
