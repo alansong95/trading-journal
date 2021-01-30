@@ -5,7 +5,10 @@
   <mat-icon class="clickable" (click)="addAccount(input.value); input.value=''">add</mat-icon>
 
   <mat-list>
-    <mat-list-item *ngFor="let account of accounts">{{account}}</mat-list-item>
+    <div *ngFor="let account of accounts">
+      <mat-list-item>{{account}}</mat-list-item>
+      <mat-icon class="clickable" (click)="deleteAccount(account)">delete</mat-icon>
+    </div>
    </mat-list>   
 </mat-dialog-content>
 <mat-dialog-actions>

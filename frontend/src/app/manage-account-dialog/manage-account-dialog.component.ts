@@ -7,7 +7,7 @@ import { AccountService } from '../account.service';
   styleUrls: ['./manage-account-dialog.component.css']
 })
 export class ManageAccountDialogComponent implements OnInit {
-  accounts;
+  accounts = [];
 
   constructor(
     private accountService: AccountService
@@ -23,7 +23,11 @@ export class ManageAccountDialogComponent implements OnInit {
     });
   }
 
-  addAccount(accountName) {
-    this.accounts.push(accountName);
+  addAccount(toAdd: string) {
+    this.accounts.push(toAdd);
+  }
+
+  deleteAccount(toDelete: string) {
+    this.accounts = this.accounts.filter(account => account !== toDelete);
   }
 }
