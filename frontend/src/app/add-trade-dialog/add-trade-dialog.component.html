@@ -1,0 +1,40 @@
+<mat-dialog-content>
+  <h1>Add a Trade</h1>
+
+  <table>
+    <tr>
+      <th>open</th>
+      <th>expiry</th>
+      <th>close</th>
+      <th>symbol</th>
+      <th>type</th>
+      <th>strikes</th>
+      <th>open</th>
+      <th>filled</th>
+      <th>quantity</th>
+      <th>p/l</th>
+    </tr>
+    <tr>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.openDate"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.expiryDate"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.closeDate"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.symbol"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.type"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.strikes"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.open"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.filled"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.quantity"></td>
+      <td class="table-data"><input class="table-input" type="text" [(ngModel)]="trade.pl"></td>
+    </tr>
+  </table>
+
+  <mat-form-field class="full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button class="clickable" [mat-dialog-close]="trade">Add</button>
+</mat-dialog-actions>

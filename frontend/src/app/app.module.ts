@@ -13,12 +13,19 @@ import { ManageAccountDialogComponent } from './manage-account-dialog/manage-acc
 import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import {MatInputModule} from '@angular/material/input';
+import { MainComponent } from './main/main.component';
+import {MatButtonModule} from '@angular/material/button';
+import { AddTradeDialogComponent } from './add-trade-dialog/add-trade-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ManageAccountDialogComponent
+    ManageAccountDialogComponent,
+    MainComponent,
+    AddTradeDialogComponent,
+    AddTradeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +37,13 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatListModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
   ],
   entryComponents: [
-    ManageAccountDialogComponent
+    ManageAccountDialogComponent,
+    AddTradeDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
