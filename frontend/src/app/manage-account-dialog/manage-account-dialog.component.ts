@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-manage-account-dialog',
@@ -6,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-account-dialog.component.css']
 })
 export class ManageAccountDialogComponent implements OnInit {
+  accounts;
 
-  constructor() { }
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
-    
+    this.accountService.getAccounts().subscribe(res => {
+      console.log(res);
+    });
   }
 
 

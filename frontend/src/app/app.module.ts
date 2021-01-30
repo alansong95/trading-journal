@@ -10,7 +10,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {HeaderComponent} from './header/header.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ManageAccountDialogComponent } from './manage-account-dialog/manage-account-dialog.component';
-
+import {MatListModule} from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,12 @@ import { ManageAccountDialogComponent } from './manage-account-dialog/manage-acc
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    HttpClientModule
+  ],
+  entryComponents: [
+    ManageAccountDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
