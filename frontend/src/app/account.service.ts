@@ -12,7 +12,7 @@ export class AccountService {
     private httpClient: HttpClient
   ) { }
 
-  getAccounts(): Observable<string[]> {
-    return this.httpClient.get<string[]>(environment.serverURL + '/accounts/get');
+  getAccounts(): Observable<any> {
+    return this.httpClient.get<any>(environment.serverURL + '/accounts/get');
   }
 }

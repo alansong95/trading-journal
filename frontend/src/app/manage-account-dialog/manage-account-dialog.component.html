@@ -1,4 +1,9 @@
 <mat-dialog-content>
+  <mat-form-field class="full-width">
+    <input matInput #input placeholder="Account name">
+  </mat-form-field>
+  <mat-icon class="clickable" (click)="addAccount(input.value); input.value=''">add</mat-icon>
+
   <mat-list>
     <mat-list-item *ngFor="let account of accounts">{{account}}</mat-list-item>
    </mat-list>   

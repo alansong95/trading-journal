@@ -15,9 +15,15 @@ export class ManageAccountDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountService.getAccounts().subscribe(res => {
-      console.log(res);
+      if (res.resp === 'success') {
+        this.accounts = res.data.accounts;
+      } else {
+        alert('Could not fetch your accounts. Please try again later.');
+      }
     });
   }
 
-
+  addAccount(accountName) {
+    this.accounts.push(accountName);
+  }
 }
