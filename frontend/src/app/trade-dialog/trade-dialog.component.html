@@ -16,7 +16,7 @@
         <th>p/l</th>
       </tr>
       <tr>
-        <td class="table-data"><input class="table-input" type="text" name="openDate" [(ngModel)]="trade.openDate" required></td>
+        <td class="table-data"><input class="table-input" [ngClass]="{'required': trade.openDate === null}" type="text" name="openDate" [(ngModel)]="trade.openDate" required></td>
         <td class="table-data"><input class="table-input" type="text" name="expiryDate" [(ngModel)]="trade.expiryDate" required></td>
         <td class="table-data"><input class="table-input" type="text" name="closeDate" [(ngModel)]="trade.closeDate"></td>
         <td class="table-data"><input class="table-input" type="text" name="symbol" [(ngModel)]="trade.symbol" required></td>

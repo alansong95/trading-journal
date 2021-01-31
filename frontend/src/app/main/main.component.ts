@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { AddTradeDialogComponent } from '../add-trade-dialog/add-trade-dialog.component';
+import { TradeDialogComponent } from '../trade-dialog/trade-dialog.component';
 
 @Component({
   selector: 'app-main',
@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   }
 
   addTrade() {
-    const dialogRef = this.dialog.open(AddTradeDialogComponent);
+    const dialogRef = this.dialog.open(TradeDialogComponent);
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
     });
