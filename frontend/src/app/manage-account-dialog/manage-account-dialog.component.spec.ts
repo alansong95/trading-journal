@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ManageAccountDialogComponent } from './manage-account-dialog.component';
 
@@ -6,7 +6,7 @@ describe('ManageAccountDialogComponent', () => {
   let component: ManageAccountDialogComponent;
   let fixture: ComponentFixture<ManageAccountDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ManageAccountDialogComponent ]
     })
