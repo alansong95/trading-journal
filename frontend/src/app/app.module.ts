@@ -39,7 +39,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule,
+    FormsModule
   ],
   entryComponents: [
     ManageAccountDialogComponent,

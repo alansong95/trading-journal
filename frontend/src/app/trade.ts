@@ -1,14 +1,14 @@
 export class Trade {
-    openDate: string = '';
-    expiryDate: string = '';
-    closeDate: string = '';
-    symbol: string = '';
-    type: string = '';
-    strikes: string = '';
-    open: string = '';
-    filled: string = '';
-    quantity: string = '';
-    pl: string = '';
-    opening_note: string = '';
-    closing_note: string = '';
+    openDate: string = null;
+    expiryDate: string = null;
+    closeDate: string = null;
+    symbol: string = null;
+    type: string = null;
+    strikes: string = null;
+    open: string = null;
+    filled: string = null;
+    quantity: string = null;
+    pl: string = null;
+    opening_note: string = null;
+    closing_note: string = null;
 }
