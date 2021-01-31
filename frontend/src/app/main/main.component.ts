@@ -18,7 +18,11 @@ export class MainComponent implements OnInit {
   }
 
   addTrade() {
-    const dialogRef = this.dialog.open(TradeDialogComponent);
+    const dialogRef = this.dialog.open(TradeDialogComponent, {
+      data: {
+        trade: null
+      }
+    });
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
     });

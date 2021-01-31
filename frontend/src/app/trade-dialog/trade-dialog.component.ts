@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 import { Trade } from '../trade';
 
@@ -11,9 +13,23 @@ import { Trade } from '../trade';
 export class TradeDialogComponent implements OnInit {
   trade: Trade;
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit(): void {
-    this.trade = new Trade();
+    if (this.isAdd()) {
+      this.trade = new Trade();
+    } else {
+      this.trade = this.data.trade;
+    }
+  }
+
+  isAdd() {
+    return !this.data.trade;
+  }
+
+  isEdit() {
+    return this.data.trade;
   }
 }
