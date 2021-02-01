@@ -41,11 +41,11 @@ export class TradeDialogComponent implements OnInit {
     );
   }
 
-  isAdd() {
+  isAdd(): boolean {
     return !this.data.trade;
   }
 
-  isEdit() {
+  isEdit(): boolean {
     return this.data.trade;
   }
 }

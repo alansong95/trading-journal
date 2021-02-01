@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { TradeDialogComponent } from '../trade-dialog/trade-dialog.component';
+import { TradeService } from '../trade.service';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +12,8 @@ import { TradeDialogComponent } from '../trade-dialog/trade-dialog.component';
 export class MainComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private tradeService: TradeService,
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +25,12 @@ export class MainComponent implements OnInit {
         trade: null
       }
     });
-    dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
+    dialogRef.afterClosed().subscribe(trade => {
+      if (trade) {
+        this.tradeService.addTrade(trade).subscribe(res => {
+          console.log(res);
+        });
+      }
     });
   }
 }

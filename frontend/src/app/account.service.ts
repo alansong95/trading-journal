@@ -4,19 +4,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { UserService } from './user.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  user = 'alan';
-
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private userService: UserService,
   ) { }
 
   getAccounts(): Observable<any> {
-    return this.httpClient.get<any>(environment.serverURL + '/accounts/get/' + this.user).pipe(
+    return this.httpClient.get<any>(environment.serverURL + '/accounts/get/' + this.userService.getUser()).pipe(
       catchError((_) => {
         return of({resp: 'fail', data: {message: 'Could not fetch your accounts. Please try again later.'}});
       })
@@ -26,7 +27,7 @@ export class AccountService {
   saveAccounts(accounts): Observable<any> {
     return this.httpClient.post<any>(environment.serverURL + '/accounts/save', {
       accounts,
-      user: this.user
+      user: this.userService.getUser()
     }).pipe(
       catchError((_) => {
         return of({resp: 'fail', data: {message: 'Could not save your accounts. Please try again later.'}});
