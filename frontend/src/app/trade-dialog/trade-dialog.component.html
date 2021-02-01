@@ -4,6 +4,7 @@
 
     <table>
       <tr>
+        <th [ngClass]="{'required': !trade.account}">account</th>
         <th [ngClass]="{'required': !trade.openDate}">open</th>
         <th [ngClass]="{'required': !trade.expiryDate}">expiry</th>
         <th [ngClass]="{'required': !trade.closeDate && isEdit()}">close</th>
@@ -16,6 +17,12 @@
         <th [ngClass]="{'required': !trade.pl && isEdit()}">p/l</th>
       </tr>
       <tr>
+        <mat-select>
+          <mat-option *ngFor="let account of accounts" [value]="trade.account">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+        <td class="table-data"><input class="table-input" type="text" name="account" [(ngModel)]="trade.account" required></td>
         <td class="table-data"><input class="table-input" type="text" name="openDate" [(ngModel)]="trade.openDate" required></td>
         <td class="table-data"><input class="table-input" type="text" name="expiryDate" [(ngModel)]="trade.expiryDate" required></td>
         <td class="table-data"><input class="table-input" type="text" name="closeDate" [(ngModel)]="trade.closeDate"></td>

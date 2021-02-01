@@ -17,6 +17,7 @@ import { MainComponent } from './main/main.component';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { TradeDialogComponent } from './trade-dialog/trade-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TradeDialogComponent } from './trade-dialog/trade-dialog.component';
     HttpClientModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   entryComponents: [
     ManageAccountDialogComponent,

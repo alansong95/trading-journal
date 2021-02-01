@@ -1,4 +1,5 @@
 export class Trade {
+    account: string = null;
     openDate: string = null;
     expiryDate: string = null;
     closeDate: string = null;

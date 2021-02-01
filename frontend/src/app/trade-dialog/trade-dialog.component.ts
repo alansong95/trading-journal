@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 
 import { Trade } from '../trade';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-trade-dialog',
@@ -12,9 +13,11 @@ import { Trade } from '../trade';
 })
 export class TradeDialogComponent implements OnInit {
   trade: Trade;
+  accounts;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private accountService: AccountService,
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +26,14 @@ export class TradeDialogComponent implements OnInit {
     } else {
       this.trade = this.data.trade;
     }
+
+    this.accountService.getAccounts().subscribe(
+      res => {
+        if (res.resp === 'success') {
+          this.accounts = res.data.accounts;
+        }
+      }
+    );
   }
 
   isAdd() {

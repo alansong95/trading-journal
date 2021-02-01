@@ -1,11 +1,21 @@
 from json import dumps
-from constants import RESP, SUCCESS, DATA, ACCOUNTS
+from constants import RESP, SUCCESS, FAIL, DATA, ACCOUNTS, MESSAGE, USER
+import db_service
 
-_accounts = []
+db = db_service.get_db()
 
-def getAccounts():
-    return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: _accounts}})
+def getAccounts(user):
+    try:
+        accounts = db.accounts.find_one({USER: user})
+        if accounts:
+            return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: accounts[ACCOUNTS]}})
+        return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: []}})
+    except Exception as e:
+        return dumps({RESP: FAIL, DATA: {MESSAGE: e}})
 
-def saveAccounts(accounts):
-    _accounts = accounts
-    return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: _accounts}})
+def saveAccounts(user, accounts):
+    try:
+        db.accounts.update_one({USER: user}, {"$set": {ACCOUNTS: accounts}}, upsert=True);
+        return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: accounts}})
+    except Exception as e:
+        return dumps({RESP: FAIL, DATA: {MESSAGE: e}})
