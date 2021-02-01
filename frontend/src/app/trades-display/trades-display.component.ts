@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Trade } from '../trade';
+import { TradeDialogComponent } from '../trade-dialog/trade-dialog.component';
 import { TradeService } from '../trade.service';
 
 
@@ -10,10 +12,11 @@ import { TradeService } from '../trade.service';
   styleUrls: ['./trades-display.component.css']
 })
 export class TradesDisplayComponent implements OnInit {
-  displayedColumns: string[] = ['openDate', 'expiryDate', 'closeDate', 'symbol', 'type', 'strikes', 'open', 'filled', 'quantity', 'pl'];
+  displayedColumns: string[] = ['openDate', 'expiryDate', 'closeDate', 'symbol', 'type', 'strikes', 'open', 'filled', 'quantity', 'pl', 'settings'];
   trades: Trade[];
 
   constructor(
+    public dialog: MatDialog,
     private tradeService: TradeService,
   ) { }
 
@@ -28,4 +31,18 @@ export class TradesDisplayComponent implements OnInit {
     })
   }
 
+  updateTrade(trade) {
+    const dialogRef = this.dialog.open(TradeDialogComponent, {
+      data: {
+        trade: trade
+      }
+    });
+    dialogRef.afterClosed().subscribe(trade => {
+      if (trade) {
+        this.tradeService.updateTrade(trade).subscribe(res => {
+          console.log(res);
+        });
+      }
+    });
+  }
 }

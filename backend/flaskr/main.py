@@ -33,4 +33,11 @@ def addTrade():
     user = data[USER]
     return trade_service.addTrade(user, trade)
 
+@app.route('/trade/update', methods=['POST'])
+def updateTrade():
+    data = loads(request.data)
+    trade = data[TRADE]
+    user = data[USER]
+    return trade_service.updateTrade(user, trade)
+
 app.run(host='0.0.0.0', port=5000)

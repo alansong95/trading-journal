@@ -17,6 +17,14 @@ export class TradeService {
     private userService: UserService,
   ) { }
 
+  getTrades(): Observable<any> {
+    return this.httpClient.get<any>(environment.serverURL + '/trades/get/' + this.userService.getUser()).pipe(
+      catchError((_) => {
+        return of({resp: 'fail', data: {message: 'Could not load your trades. Please try again later.'}});
+      })
+    );
+  }
+
   addTrade(trade: Trade): Observable<any> {
     return this.httpClient.post<any>(environment.serverURL + '/trade/add', {
       trade,
@@ -28,10 +36,13 @@ export class TradeService {
     );
   }
 
-  getTrades(): Observable<any> {
-    return this.httpClient.get<any>(environment.serverURL + '/trades/get/' + this.userService.getUser()).pipe(
+  updateTrade(trade: Trade): Observable<any> {
+    return this.httpClient.post<any>(environment.serverURL + '/trade/update', {
+      trade,
+      user: this.userService.getUser(),
+    }).pipe(
       catchError((_) => {
-        return of({resp: 'fail', data: {message: 'Could not load your trades. Please try again later.'}});
+        return of({resp: 'fail', data: {message: 'Could not add the trade. Please try again later.'}});
       })
     );
   }
