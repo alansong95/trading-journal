@@ -8,6 +8,10 @@ export const environment = {
   serverURL: 'http://localhost:5000',
 };
 
+export const constants = {
+  TYPES: ['Covered Call', 'Cash Secured Put'],
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
