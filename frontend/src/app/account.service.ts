@@ -24,8 +24,8 @@ export class AccountService {
     );
   }
 
-  saveAccounts(accounts): Observable<any> {
-    return this.httpClient.post<any>(environment.serverURL + '/accounts/save', {
+  updateAccounts(accounts): Observable<any> {
+    return this.httpClient.post<any>(environment.serverURL + '/accounts/update', {
       accounts,
       user: this.userService.getUser()
     }).pipe(

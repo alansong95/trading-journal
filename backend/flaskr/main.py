@@ -13,11 +13,19 @@ CORS(app)
 def getAccounts(user):
     return account.getAccounts(user)
 
-@app.route('/accounts/save', methods=['POST'])
-def saveAccounts():
+@app.route('/accounts/update', methods=['POST'])
+def updateAccounts():
     data = loads(request.data)
     accounts = data[ACCOUNTS]
     user = data[USER]
-    return account.saveAccounts(user,accounts)
+    return account.updateAccounts(user,accounts)
+
+# trades
+@app.route('/trade/add', methods=['POST'])
+def addTrade():
+    data = loads(request.data)
+    accounts = data[ACCOUNTS]
+    user = data[USER]
+    return account.upda(user,accounts)
 
 app.run(host='0.0.0.0', port=5000)

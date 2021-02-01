@@ -13,7 +13,7 @@ def getAccounts(user):
     except Exception as e:
         return dumps({RESP: FAIL, DATA: {MESSAGE: e}})
 
-def saveAccounts(user, accounts):
+def updateAccounts(user, accounts):
     try:
         db.accounts.update_one({USER: user}, {"$set": {ACCOUNTS: accounts}}, upsert=True)
         return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: accounts}})

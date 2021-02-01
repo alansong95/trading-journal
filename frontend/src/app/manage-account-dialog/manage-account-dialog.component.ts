@@ -48,13 +48,13 @@ export class ManageAccountDialogComponent implements OnInit {
   //   });
   // }
 
-  saveAccounts() {
-    return this.accountService.saveAccounts(this.accounts);
+  updateAccounts() {
+    return this.accountService.updateAccounts(this.accounts);
   }
 
   onClose() {
     console.log(this.accounts);
-    this.saveAccounts().subscribe(res => {
+    this.updateAccounts().subscribe(res => {
       if (res.resp === 'success') {
         this.accounts = res.data.accounts;
         this.dialogRef.close();
