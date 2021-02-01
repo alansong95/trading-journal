@@ -31,6 +31,7 @@ export class TradeDialogComponent implements OnInit {
       res => {
         if (res.resp === 'success') {
           this.accounts = res.data.accounts;
+          console.log(this.accounts);
         }
       }
     );

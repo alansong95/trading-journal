@@ -15,7 +15,7 @@ def getAccounts(user):
 
 def saveAccounts(user, accounts):
     try:
-        db.accounts.update_one({USER: user}, {"$set": {ACCOUNTS: accounts}}, upsert=True);
+        db.accounts.update_one({USER: user}, {"$set": {ACCOUNTS: accounts}}, upsert=True)
         return dumps({RESP: SUCCESS, DATA: {ACCOUNTS: accounts}})
     except Exception as e:
         return dumps({RESP: FAIL, DATA: {MESSAGE: e}})
