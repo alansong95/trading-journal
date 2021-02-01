@@ -23,7 +23,15 @@ export class TradeService {
       user: this.userService.getUser(),
     }).pipe(
       catchError((_) => {
-        return of({resp: 'fail', data: {message: 'Could not save your accounts. Please try again later.'}});
+        return of({resp: 'fail', data: {message: 'Could not add the trade. Please try again later.'}});
+      })
+    );
+  }
+
+  getTrades(): Observable<any> {
+    return this.httpClient.get<any>(environment.serverURL + '/trades/get/' + this.userService.getUser()).pipe(
+      catchError((_) => {
+        return of({resp: 'fail', data: {message: 'Could not load your trades. Please try again later.'}});
       })
     );
   }

@@ -18,6 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { TradeDialogComponent } from './trade-dialog/trade-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import { TradesDisplayComponent } from './trades-display/trades-display.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
     HeaderComponent,
     ManageAccountDialogComponent,
     MainComponent,
-    TradeDialogComponent
+    TradeDialogComponent,
+    TradesDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   entryComponents: [
     ManageAccountDialogComponent,

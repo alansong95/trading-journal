@@ -1,4 +1,4 @@
-from json import dumps
+from bson.json_util import dumps
 from constants import RESP, SUCCESS, FAIL, DATA, ACCOUNTS, MESSAGE, USER
 import db_service
 
